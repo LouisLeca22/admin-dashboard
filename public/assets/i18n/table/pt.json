@@ -1,0 +1,14 @@
+{
+  "colId": "ID de rastreamento",
+  "transaction": "Última transação ",
+  "colProduct": "Produto",
+  "colCostumer": "Cliente",
+  "colDate": "Data",
+  "colAmount": "Montante",
+  "colMethod": "Método de Pagamento",
+  "colStatus": "Status",
+  "cash": "Dinheiro na entrega.",
+  "online": "Pagamento online",
+  "approved": "Aprovado",
+  "pending": "Pendiente"
+}

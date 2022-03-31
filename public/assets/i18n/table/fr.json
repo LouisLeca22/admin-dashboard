@@ -1,0 +1,14 @@
+{
+  "colId": "Numéro de suivi",
+  "transaction": "Dernière transaction",
+  "colProduct": "Produit",
+  "colCostumer": "Client",
+  "colDate": "Date",
+  "colAmount": "Montant",
+  "colMethod": "Méthode",
+  "colStatus": "Statut",
+  "cash": "Comptant à la livraison",
+  "online": "En ligne",
+  "approved": "Validé",
+  "pending": "En attente"
+}

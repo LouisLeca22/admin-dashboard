@@ -1,0 +1,10 @@
+{
+  "users": "USUARIOS",
+  "linkUsers": "Ver todos los usuarios",
+  "products": "PRODUCTOS",
+  "linkProducts": "Ver todos los productos",
+  "orders": "PEDIDOS",
+  "linkOrders": "Ver todos los pedidos",
+  "deliveries": "ENTREGAS",
+  "linkDeliveries": "Ver todos las entregas"
+}

@@ -1,0 +1,14 @@
+{
+  "username": "Nome de usuário",
+  "email" : "Correio eletrônico",
+  "age": "Idade",
+  "status": "Status",
+  "action": "Ação",
+  "view": "Ver",
+  "delete": "Excluir",
+  "title": "Adicionar um novo usuário ",
+  "add": "Adicionar",
+  "active": "ativo",
+  "pending": "pendiente",
+  "passive": "inativo"
+}

@@ -1,0 +1,14 @@
+{
+  "colId": "Codice di monitoraggio",
+  "transaction": "Ultima transazione",
+  "colProduct": "Prodotto",
+  "colCostumer": "Cliente",
+  "colDate": "Data",
+  "colAmount": "Importo",
+  "colMethod": "Metodo di pagamento",
+  "colStatus": "Stato",
+  "cash": "Pagamento alla consegna",
+  "online": "Pagamento online",
+  "approved": "Approvato",
+  "pending": "In attesa"
+}

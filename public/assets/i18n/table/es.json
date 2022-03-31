@@ -1,0 +1,14 @@
+{
+  "colId": "Id de seguimiento",
+  "transaction": "Última transacción",
+  "colProduct": "Producto",
+  "colCostumer": "Cliente",
+  "colDate": "Fecha",
+  "colAmount": "Importe",
+  "colMethod": "Método de pago",
+  "colStatus": "Estado",
+  "cash": "Pago contra entrega",
+  "online": "Pago en linea",
+  "approved": "Aprobado",
+  "pending": "Pendiente"
+}

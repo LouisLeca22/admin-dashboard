@@ -1,0 +1,14 @@
+{
+  "colId": "Tracking ID",
+  "transaction": "Last transaction",
+  "colProduct": "Product",
+  "colCostumer": "Customer",
+  "colDate": "Date",
+  "colAmount": "Amount",
+  "colMethod": "Method",
+  "colStatus": "Status",
+  "cash": "Cash on delivery",
+  "online": "Online",
+  "approved": "Approved",
+  "pending": "Pending"
+}

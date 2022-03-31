@@ -1,0 +1,18 @@
+{
+  "addNewUser": "Add a new user",
+  "addNewProduct": "Add a new product",
+  "username": "Username",
+  "name": "Name and surname",
+  "email": "Email",
+  "phone": "Phone",
+  "password": "Password",
+  "address": "Address",
+  "country": "Country",
+  "title": "Title",
+  "description": "Description",
+  "category": "Category",
+  "price": "Price",
+  "stock": "Stock",
+  "image": "Image",
+  "send": "Send"
+}

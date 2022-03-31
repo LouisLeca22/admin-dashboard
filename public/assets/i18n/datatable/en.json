@@ -1,0 +1,14 @@
+{
+  "username": "Username",
+  "email" : "Email",
+  "age": "Age",
+  "status": "Status",
+  "action": "Action",
+  "view": "View",
+  "delete": "Delete",
+  "title": "Add new user",
+  "add": "Add new",
+  "active": "active",
+  "pending": "pending",
+  "passive": "passive"
+}
