@@ -3,11 +3,9 @@
   "main": "PRINCIPALE ",
   "overview": "Panoramica",
   "lists": "LISTE",
-  "users": "Utenti",
+  "users": "Clienti",
   "products": "Prodotti",
   "orders": "Ordini",
-  "deliveries": "Consegne",
-  "useful": "UTULE",
-  "stats": "Statistiche"
+  "deliveries": "Consegne"
 }
 

@@ -3,11 +3,9 @@
   "main": "PRINCIPAL",
   "overview": "Visão geral",
   "lists": "LISTS",
-  "users": "Usuários",
+  "users": "Clientes",
   "products": "Produtos",
   "orders": "Pedidos",
-  "deliveries": "Entregas",
-  "useful": "ÚTIL",
-  "stats": "Estatísticas "
+  "deliveries": "Entregas"
 }
 

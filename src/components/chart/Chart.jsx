@@ -1,5 +1,14 @@
 import "./chart.scss"
 import {useTranslation} from "react-i18next"
+import {useEffect, useRef, useState} from "react"
+import {db} from "../../firebase"
+import {
+  query,
+  collection,
+  where,
+  getDocs
+
+} from 'firebase/firestore';
 
 import {
   AreaChart,
@@ -13,18 +22,54 @@ import {
 
 
 
-function Chart({title, aspect}) {
+function Chart({title, aspect, user, product}) {
   const {t} = useTranslation(["chart"])
+  const [data, setData] = useState([])
 
+  const u = useRef(user).current;
+  const p = useRef(product).current;
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      const today = new Date().getFullYear()
+      let ref = collection(db, "orders")
+      if (u) {
+        ref = query(ref, where(...u));
+      }
   
-  const data = [
-    { name: t("feb"), Total: 1200 },
-    { name: t('mar'), Total: 2100 },
-    { name: t("apr"), Total: 800 },
-    { name: t("may"), Total: 1600 },
-    { name: t("jun"), Total: 900 },
-    { name: t("jul"), Total: 1700 },
-  ];
+      if(p){
+        ref = query(ref, where(...p));
+      }
+
+      let list = []
+      
+      const snapShot = await getDocs(ref)
+      snapShot.forEach(doc => {
+        if(doc.data().timeStamp.toDate().getFullYear() === today){
+          list.push(doc.data().timeStamp.toDate().getMonth())
+        }
+      })
+      const occurrences = {}
+      for (const num of list){
+        occurrences[num] = occurrences[num] ? occurrences[num] + 1 : 1
+      }
+     
+
+      setData([
+        {name: t("feb"), Total: occurrences[1] ? occurrences[1]: 0},
+        {name: t("mar"), Total: occurrences[2] ? occurrences[2] : 0},
+        {name: t("apr"), Total: occurrences[3] ? occurrences[3]: 0},
+        
+      ])
+
+    }
+
+    fetchData()
+
+  }, [t, p, u])
+  
+  
 
   return (
     <div className="chart">

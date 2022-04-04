@@ -1,10 +1,10 @@
 {
-  "users": "USUARIOS",
+  "users": "NUEVOS CLIENTES",
   "linkUsers": "Ver todos los usuarios",
-  "products": "PRODUCTOS",
+  "products": "NUEVOS PRODUCTOS",
   "linkProducts": "Ver todos los productos",
-  "orders": "PEDIDOS",
+  "orders": "NUEVOS PEDIDOS",
   "linkOrders": "Ver todos los pedidos",
-  "deliveries": "ENTREGAS",
+  "deliveries": "NUEVAS ENTREGAS",
   "linkDeliveries": "Ver todos las entregas"
 }

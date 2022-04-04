@@ -1,9 +1,12 @@
 {
+  "jan": "Janvier",
   "feb": "Février",
   "mar": "Mars",
   "apr": "Avril",
   "may": "Mai",
   "jun": "Juin",
   "jul": "Juillet",
-  "last": "Recettes des six derniers mois"
+  "last": "Recettes des six derniers mois",
+  "lastUser" : "Dernières dépenses pour cet utilisateur",
+  "lastProduct" : "Dernières dépenses pour ce produit"
 }

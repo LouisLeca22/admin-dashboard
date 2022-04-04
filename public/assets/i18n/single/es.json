@@ -1,0 +1,14 @@
+{
+  "delete": "Eliminar",
+  "information": "Información",
+  "email": "Correo electrónico",
+  "phone": "Teléfono",
+  "address": "Dirección",
+  "country": "País",
+  "category": "Categoría",
+  "size": "Tamaño",
+  "stock": "Stock",
+  "price": "Precio",
+  "spending": "Gasto del cliente ( últimos 6 meses)",
+  "transactions": "Últimas transacciones"
+}

@@ -4,7 +4,6 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
-import InsertChartIcon from "@mui/icons-material/InsertChart";
 
 
 import {Link} from "react-router-dom"
@@ -47,19 +46,18 @@ function Sidebar() {
               <span>{t('products')}</span>
             </li>
           </Link>
+          <Link to="/orders" style={{ textDecoration: "none" }}>
           <li>
             <CreditCardIcon className="icon" />
             <span>{t('orders')}</span>
           </li>
+          </Link>
+          <Link to="/deliveries" style={{ textDecoration: "none" }}>
           <li>
             <LocalShippingIcon className="icon" />
             <span>{t('deliveries')}</span>
           </li>
-          <p className="title">{t('useful')}</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>{t('stats')}</span>
-          </li>
+          </Link>
         </ul>
       </div>
       <div className='bottom'>

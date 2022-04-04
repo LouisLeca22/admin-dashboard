@@ -1,104 +1,174 @@
+import './new.scss';
+import Sidebar from '../../components/sidebar/Sidebar';
+import Navbar from '../../components/navbar/Navbar';
+import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { db, storage } from '../../firebase';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { useNavigate } from 'react-router-dom';
 
-import "./new.scss";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState, useEffect} from "react";
-import {useTranslation} from "react-i18next"
+const New = ({ inputs, type }) => {
+  const navigate = useNavigate()
+  const [file, setFile] = useState('');
+  const { i18n, t } = useTranslation(['new']);
+  const [newInputs, setNewInputs] = useState(inputs);
+  const [data, setData] = useState({});
+  const [percentage, setPercentage] = useState(null)
 
-const New = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
+  useEffect(() => {
+    const uploadFile = () => {
+      const fileName = new Date().getTime() + file.name;
+      const storageRef = ref(storage, `/${type}/${fileName}`)
+      const uploadTask = uploadBytesResumable(storageRef, file);
 
-  const {i18n, t} = useTranslation(["new"])
-  const [newInputs, setNewInputs] = useState(inputs)
-
-  useEffect(() => { 
-    if(inputs[0].label === "Username"){
-      setNewInputs(prev => prev.map((input) => {
-        switch(input.id){
-          case 1:
-            return {...input, label: t("username")}
-          case 2:
-            return {...input, label: t("name")}
-          case 3:
-            return {...input, label: t("email")}
-          case 4:
-            return {...input, label: t("phone")}
-          case 5:
-            return {...input, label: t("password")}
-          case 6:
-            return {...input, label: t("address")}
-          case 7:
-            return {...input, label: t("country")}
-          default: 
-            return input 
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+          setPercentage(progress)
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Upload is paused');
+              break;
+            case 'running':
+              console.log('Upload is running');
+              break;
+            default:  
+              break;
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setData(prev => ({...prev, img: downloadURL}))
+          });
         }
-      }))
-    } else if (inputs[0].label === "Title"){
-      setNewInputs(prev => prev.map((input) => {
-        switch(input.id){
-          case 1:
-            return {...input, label: t("title")}
-          case 2:
-            return {...input, label: t("description")}
-          case 3:
-            return {...input, label: t("category")}
-          case 4:
-            return {...input, label: t("price")}
-          case 5:
-            return {...input, label: t("stock")}
-          default: 
-            return input 
-        }
-      }))
+      );
+    };
+
+    file && uploadFile();
+  }, [file, type]);
+
+
+  useEffect(() => {
+    if (type==="users") {
+      setNewInputs((prev) =>
+        prev.map((input) => {
+          switch (input.id) {
+            case 'username':
+              return { ...input, label: t('username') };
+            case 'displayName':
+              return { ...input, label: t('displayName') };
+            case 'email':
+              return { ...input, label: t('email') };
+            case 'phone':
+              return { ...input, label: t('phone') };
+            case 'password':
+              return { ...input, label: t('password') };
+            case 'address':
+              return { ...input, label: t('address') };
+            case 'country':
+              return { ...input, label: t('country') };
+            default:
+              return input;
+          }
+        })
+      );
+    } else if (type==="products") {
+      setNewInputs((prev) =>
+        prev.map((input) => {
+          switch (input.id) {
+            case 'title':
+              return { ...input, label: t('title') };
+            case 'description':
+              return { ...input, label: t('description') };
+            case 'category':
+              return { ...input, label: t('category') };
+            case 'price':
+              return { ...input, label: t('price') };
+            case 'stock':
+              return { ...input, label: t('stock') };
+            default:
+              return input;
+          }
+        })
+      );
     }
+  }, [i18n, t, inputs]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+      try {
+        await addDoc(collection(db, type), {
+          ...data,
+          timeStamp: serverTimestamp(),
+        });
 
-  }, [i18n, t, inputs])
-  
+        navigate(`/${type}`)
+      } catch (error) {
+        console.log(error);
+      }
+    
 
+  };
+
+  const handleChange = (e) => {
+    setData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
 
   return (
-    <div className="new">
+    <div className='new'>
       <Sidebar />
-      <div className="newContainer">
+      <div className='newContainer'>
         <Navbar />
-        <div className="top">
-          {title === "user" && (<h1>{t("addNewUser")}</h1>)}
-          {title === "product" && (<h1>{t("addNewProduct")}</h1>)}
+        <div className='top'>
+          {type === 'users' && <h1>{t('addNewUser')}</h1>}
+          {type === 'products' && <h1>{t('addNewProduct')}</h1>}
         </div>
-        <div className="bottom">
-          <div className="left">
+        <div className='bottom'>
+          <div className='left'>
             <img
               src={
                 file
                   ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
               }
-              alt=""
+              alt=''
             />
           </div>
-          <div className="right">
-            <form>
-              <div className="formInput">
-                <label htmlFor="file">
-                  {t("image")}: <DriveFolderUploadOutlinedIcon className="icon" />
+          <div className='right'>
+            <form onSubmit={handleSubmit}>
+              <div className='formInput'>
+                <label htmlFor='file'>
+                  {t('image')}:{' '}
+                  <DriveFolderUploadOutlinedIcon className='icon' />
                 </label>
                 <input
-                  type="file"
-                  id="file"
+                  type='file'
+                  id='file'
                   onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                 />
               </div>
 
               {newInputs.map((input) => (
-                <div className="formInput" key={input.id}>
+                <div className='formInput' key={input.id}>
                   <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
+                  <input
+                    type={input.type}
+                    id={input.id}
+                    placeholder={input.placeholder}
+                    onChange={handleChange}
+                  />
                 </div>
               ))}
-              <button>{t("send")}</button>
+              <button disabled={percentage !== null  && percentage < 100} type='submit'>{t('send')}</button>
             </form>
           </div>
         </div>

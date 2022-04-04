@@ -9,7 +9,7 @@ i18n.use(Backend).use(languageDetector).use(initReactI18next).init({
   },
   fallbackLng: "fr",
   debug: false,
-  ns: ["home", "navbar", "chart", "sidebar", "datatable", "featured", "table"],
+  ns: ["navbar", "chart", "sidebar", "datatable", "featured", "table", "single"],
   interpolation: {
     escapeValue: false,
     formatSeparator: ","

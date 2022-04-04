@@ -1,0 +1,14 @@
+{
+  "delete": "Delete",
+  "information": "Information",
+  "email": "Email",
+  "phone": "Phone",
+  "address": "Address",
+  "country": "Country",
+  "category": "Category",
+  "size": "Size",
+  "stock": "Stock",
+  "price": "Price",
+  "spending": "Client spending ( Last 6 Months)",
+  "transactions": "Last Transactions"
+}

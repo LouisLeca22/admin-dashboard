@@ -3,11 +3,9 @@
   "main": "MAIN",
   "overview": "Overview",
   "lists": "LISTS",
-  "users": "Users",
+  "users": "Clients",
   "products": "Products",
   "orders": "Orders",
-  "deliveries": "Deliveries",
-  "useful": "USEFUL",
-  "stats": "Stats"
+  "deliveries": "Deliveries"
 }
 

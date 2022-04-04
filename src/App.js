@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single"
 import New from "./pages/new/New"
-import { productInputs, userInputs } from "./formsource";
+import { productInputs, userInputs } from "./formSource";
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import "./style/dark.scss"
 import { useContext } from "react";
@@ -21,14 +21,20 @@ function App() {
             <Route index element={<Home />} />
           </Route>
           <Route path="users">
-            <Route index element={<List />} />
-            <Route path=":userId" element={<Single />} />
-            <Route path="new" element={<New  inputs={userInputs} title="user"/>} />
+            <Route index element={<List type="users" />} />
+            <Route path=":id" element={<Single />} />
+            <Route path="new" element={<New  inputs={userInputs} type="users"/>} />
           </Route>
           <Route path="products">
-            <Route index element={<List />} />
-            <Route path=":productId" element={<Single />} />
-            <Route path="new" element={<New  inputs={productInputs} title="product"/>} />
+            <Route index element={<List type="products" />} />
+            <Route path=":id" element={<Single />} />
+            <Route path="new" element={<New  inputs={productInputs} type="products"/>} />
+          </Route>
+          <Route path="orders">
+            <Route index element={<List type="orders" />} />
+          </Route>
+          <Route path="deliveries">
+            <Route index element={<List type="deliveries" />} />
           </Route>
         </Routes>
       </BrowserRouter>

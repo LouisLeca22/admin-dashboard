@@ -1,8 +1,8 @@
 {
-  "addNewUser": "Añadir un nuevo usuario",
+  "addNewUser": "Añadir un nuevo cliente",
   "addNewProduct": "Añadir un nuevo producto",
   "username": "Nombre de usuario",
-  "name": "Nombre y apellido",
+  "displayName": "Nombre y apellido",
   "email": "Correo electrónico",
   "phone": "Teléfono",
   "password": "Contraseña",
